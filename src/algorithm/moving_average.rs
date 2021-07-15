@@ -8,6 +8,9 @@ pub(crate) fn calculate_difficulty(new_block_mills : usize, nonce:usize){
     let num = NUM.load(Ordering::Relaxed);
     NONCE_COUNTER.fetch_add(nonce,Ordering::Relaxed);
     let nonce_count = NONCE_COUNTER.load(Ordering::Relaxed);
+    if num % 10 == 0{
+        println!("num = {}, time/num = {}", num, millisecond_count/num);
+    }
     let target_milliseconds = if (num +1)* TARGET_EVERY_N_MILLIS_TO_GENERATE_BLOCK > millisecond_count{
          (num +1)* TARGET_EVERY_N_MILLIS_TO_GENERATE_BLOCK  - millisecond_count
     }else{
