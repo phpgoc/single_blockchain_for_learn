@@ -12,7 +12,7 @@ uint = "0.9.1"
 lazy_static = "1.4.0"
 clap = "2.33.3"
 rand = "0.8.4"
-
+threadpool = "1.8.1"
 
 [[bin]]
 name = "main"
